@@ -31,6 +31,7 @@ public class DemoController {
 	@PostMapping("/login")
 	//@ResponseBody
 	public String loginProc(HttpServletRequest req, Model model) {
+
 		String uid = req.getParameter("uid");			// "uid" 가 input tag 의 name값
 		String pwd = req.getParameter("pwd");
 		//return "<h1>uid=" + uid + ", pwd=" + pwd + "</h1>";
@@ -39,6 +40,7 @@ public class DemoController {
 		model.addAttribute("pwd", pwd);
 		return "03.loginResult";
 	}
+	
 	@GetMapping("/getParam")
 	@ResponseBody
 	public String getParam(HttpServletRequest req) {
@@ -68,11 +70,12 @@ public class DemoController {
 		}
 		return"<h1>" + a + oper + b + "=" + result + "</h1>";
 	}
+	
 	@GetMapping("/calc")
 	public String calcForm() {
+		
 		return "04.calcForm";
 	}
-	
 	
 	@PostMapping("/calc")
 	public String calcProc(int a, int b, String op, Model model) {
@@ -101,5 +104,24 @@ public class DemoController {
 		model.addAttribute("result",result);
 		return "05.calcResult";
 		
+	}
+	
+	@GetMapping("/write")
+	public String writeForm() {
+		return "06.writeForm";
+	}
+	
+	@PostMapping("/write")
+	public String writeProc(HttpServletRequest req, Model model) {
+		String title = req.getParameter("title");
+		String[] languages = req.getParameterValues("language");
+		String content = req.getParameter("content");
+		
+		
+		String joinLanguages = (languages == null) ? "" : String.join(", ",  languages);
+		Board board = new Board(title, joinLanguages, content.replace("\n", "<br>"));
+		//System.out.println(board);
+		model.addAttribute("board", board);
+		return "07.writeResult";
 	}
 }

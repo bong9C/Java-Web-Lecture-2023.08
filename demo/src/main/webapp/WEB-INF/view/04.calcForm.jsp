@@ -6,11 +6,12 @@
 <meta charset="UTF-8">
 <title>계산기</title>
 </head>
-<body style = "margin: 50px;">
+<body style= "margin: 50px;">
 	<h3>단순 계산기</h3>
 	<hr>
-	<form action="/demo/calc" method="post">
-		<input type="text" name = "a" placeholder="점수를 입력하세요">
+	<!--<form action="/demo/calc" method="post">-->
+	<form method="get" action="/demo/getParam">
+		<input type="text" name= "a" placeholder="점수를 입력하세요">
 		<select name="op">
 		<option value="add" selected>+</option>
 		<option value="sub">-</option>
