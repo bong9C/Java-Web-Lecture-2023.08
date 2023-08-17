@@ -21,11 +21,11 @@
             <%@ include file="./common/aside.jspf" %>
             <!-- ======================= main ============================ -->
             <div class="col-9">
-            	<h3><storng>샘플</storng></h3>
+            	<h3 style=text-align:center; ><storng>샘플</storng></h3>
             	<hr>
+            	<%@ include file="./Homework/home_jstl1_core.jsp" %>
             </div>
-            
-             <!-- ======================= main ============================ -->
+             <!-- ======================= main =========== ================= -->
         </div>
     </div>
 	
