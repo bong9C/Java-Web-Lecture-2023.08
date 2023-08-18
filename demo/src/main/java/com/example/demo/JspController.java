@@ -26,8 +26,6 @@ public class JspController {
 		return "jsp/sample";
 	}
 	
-	
-	
 	@GetMapping("/schedule")
 	public String schedule(Model model) {
 		model.addAttribute("menu", "schedule");
@@ -127,9 +125,8 @@ public class JspController {
 		return "jsp/jstl3_fn";
 	}
 	
-	@GetMapping("/homeWork")
-	public String homeWork(Model model) {
-		model.addAttribute("menu", "user");
+	@GetMapping("/home")
+	public String homework(Model model) {
 		Address addr1 = new Address(12345, "LA", "미국");
 		Address addr2 = new Address(67890, "뉴욕", "미국");
 		Member m1 = new Member(101, "제임스", addr1);
@@ -137,16 +134,11 @@ public class JspController {
 		Member m3 = new Member(103, "홍길동", new Address(23456, "서울", "한국"));
 		Member m4 = new Member(104, "김자바", new Address(23456, "고양", "한국"));
 		
-		model.addAttribute("m1", m1);
-		model.addAttribute("m2", m2);
-		
-		Member[] members = {m1, m2};
-		model.addAttribute("memberArray", members);
-		
 		List<Member> list = new ArrayList<>();
 		list.add(m1); list.add(m2); list.add(m3); list.add(m4);
+		list.add(m1); list.add(m2); list.add(m3); list.add(m4);
 		model.addAttribute("memberList", list);
-		return "jsp/home_sample";
+		return "jsp/homework";
 	}
 	
 }
