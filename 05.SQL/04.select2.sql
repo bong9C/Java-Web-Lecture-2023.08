@@ -91,11 +91,12 @@ select custid, name from customer
     where custid in (select distinct custid from orders);
     
 -- 대한미디어에서 출판한 도서를 구매한 고객의 이름 ( 한단계씩 ) 
-select bookid from book where publisher like '대한미디어';
+select bookid from book where publisher like '대한미디어'; --대한미디어에서 출판된 책 ID
 
 select custid from orders
     where bookid in (select bookid from book where publisher like '대한미디어'); -- like 대신 =을 사용해도 됨
-    
+ -- 대한미디어에서 출판된 책을 구매한 고객은 1 번   
 select custid, name from customer
     where custid in(select custid from orders
-    where bookid in (select bookid from book where publisher like '대한미디어')); -- where 앞에 a,b로 별칭을 넣어 줄 수 있다. 
+    where bookid in (select bookid from book where publisher like '대한미디어'));-- where 앞에 a,b로 별칭을 넣어 줄 수 있다. 
+    -- 그 고객의 이름은 박지성

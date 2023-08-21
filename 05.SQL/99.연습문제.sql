@@ -78,3 +78,43 @@ select * from book;
 --(4)출판사'대한미디어'가 '대한출판사'로 이름을 바꾸었다.
 update book set publisher='대한출판사' where bookid=13;
 select * from book;
+
+
+/* 연습문제 */
+--1. 마당서점의 고객이 요구하는 다음 질문에 대해 SQL 문을 작성하시오.
+--(1) 박지성이 구매한 도서의 출판사 수
+select count(b.publisher) from orders o
+    join book b on o.bookid=b.bookid
+    join customer c on o.custid=c.custid
+    where c.name like '박지성';
+--(2) 박지성이 구매한 도서의 이름, 가격, 정가와 판매가격의 차이
+select b.bookname,b.price 정가 ,o.saleprice 세일가 ,(b.price-o.saleprice)차액 from orders o
+    join book b on o.bookid=b.bookid
+    join customer c on o.custid=c.custid
+    where c.name like '박지성';
+--(3) 박지성이 구매하지 않은 도서의 이름
+select distinct b.bookname from orders o 
+    join book b on o.bookid=b.bookid  
+    join customer c on o.custid=c.custid 
+    where not c.name like '박지성';
+
+
+--2. 마당서점의 운영자와 경영자가 요구하는 다음 질문에 대해 SQL 문을 작성하시오.
+--(1) 주문하지 않은 고객의 이름(부속질의 사용)
+select * from orders;
+
+select o.custid from orders o; -- 주문한 고객의 아이디를 먼저 뽑기 
+select c.name from customer c -- customer 에 이름 출력
+where custid not in (select o.custid from orders o); -- 조건 : 출력된 이름들 중에 (주문한 고객 아이디)not 없는것 출력!
+--(2) 주문 금액의 총액과 주문의 평균 금액
+select sum(saleprice) as sum_sales, avg(saleprice)as avg_sales from orders;
+--(3) 고객의 이름과 고객별 구매액
+select o.saleprice from orders o;
+select c.name, sum(o.saleprice) from orders o -- 고객의 이름과 구매 내역 합계를 주문 내역에서 출력
+    join customer c on c.custid=o.custid    -- order 와 customer 에서 공통된 
+    group by c.name;                        -- 고객별 이름을 불러온다. 
+
+--(4) 고객의 이름과 고객이 구매한 도서 목록
+
+--(5) 도서의 가격(Book 테이블)과 판매가격(Orders 테이블)의 차이가 가장 많은 주문
+--(6) 도서의 판매액 평균보다 자신의 구매액 평균이 더 높은 고객의 이름
