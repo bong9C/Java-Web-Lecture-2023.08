@@ -115,6 +115,7 @@ select c.name, sum(o.saleprice) from orders o -- 고객의 이름과 구매 내�
     group by c.name;                        -- 고객별 이름을 불러온다. 
 
 --(4) 고객의 이름과 고객이 구매한 도서 목록
-
+select c.name from customer c;
+select book
 --(5) 도서의 가격(Book 테이블)과 판매가격(Orders 테이블)의 차이가 가장 많은 주문
 --(6) 도서의 판매액 평균보다 자신의 구매액 평균이 더 높은 고객의 이름
