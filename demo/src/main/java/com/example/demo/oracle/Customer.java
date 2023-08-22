@@ -1,7 +1,7 @@
 package com.example.demo.oracle;
 
 public class Customer {
-	private int custId;
+	private int custId;		//객체를 만들 때 기본적으로 쓰는게 private / getter, setter 만 public
 	private String name;
 	private String addr;
 	private String phone;

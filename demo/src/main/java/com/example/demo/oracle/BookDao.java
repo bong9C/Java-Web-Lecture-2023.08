@@ -8,22 +8,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerDao {
-	// 아래용 코드는 임시용 , Spring 에서는 앞으로 사용 안함
+public class BookDao {
 	private String host;
 	private String user;
 	private String password;
 	private String database;
 	private int port;
 	
-	public CustomerDao() {
-		//아래 코드는 임시용
+	public BookDao() {
 		this.host = "localhost";
 		this.user = "hmuser";
 		this.password = "hmpass";
 		this.database = "xe";
 		this.port = 1521;
-		// 접속과 관련한 정보를 파일에 저장해서 보관하고, 이곳에서 읽어서 셋팅함. 
 	}
 	Connection myConnection() {
 		Connection conn = null;
@@ -36,55 +33,53 @@ public class CustomerDao {
 		return conn;
 	}
 	
-	public Customer getCustomer(int custId) {
+	public Book getBook(int bookId) {  //int BookId가 파라메터
 		Connection conn = myConnection();
-		String sql = "select * from customer where custid=?";
-		Customer customer = null;
+		String sql = "select * from book where bookid=?"; // ? 에 첫번째 custid를 셋팅 하겠다.
+		Book book = null;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1,  custId);
+			pstmt.setInt(1, bookId);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				custId = rs.getInt(1);
-				String name = rs.getString(2);
-				String addr = rs.getString(3);
-				String phone = rs.getString(4);
-				customer = new Customer(custId, name,addr,phone);
+				bookId = rs.getInt(1);
+				String bookname = rs.getString(2);
+				String publisher = rs.getString(3);
+				int price = rs.getInt(4);
+				book = new Book(bookId, bookname, publisher, price);
 			}
 			rs.close(); pstmt.close(); conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return customer;
+		return book;
 	}
 	
-	public List<Customer> getCustomerList() {
+	public List<Book> getBookList() {
 		Connection conn = myConnection();
-		String sql = "select * from customer";
-		List<Customer> list = new ArrayList<>();
+		String sql = "select * from book";
+		// sql 실행(select) -> 결과는 Resultset으로 받음(rs에 그 값이 들어옴)
+		List<Book> list = new ArrayList<>();
 		try {
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			Statement stmt = conn.createStatement(); 
+			ResultSet rs = stmt.executeQuery(sql);// 테이블의 값을 rs에 넣는다.
 			while(rs.next()) {
-				int custId = rs.getInt(1);
-				String name = rs.getString(2);
-				String addr = rs.getString(3);
-				String phone = rs.getString(4);
-				//객체 선언
-				Customer c = new Customer(custId, name, addr, phone);
-				list.add(c);
+				int bookId = rs.getInt(1);
+				String bookname = rs.getString(2);
+				String publisher = rs.getString(3);
+				int price = rs.getInt(4);
+				
+				Book b = new Book(bookId, bookname, publisher, price);
+				list.add(b);
 			}
-			rs.close();stmt.close();conn.close();
+			rs.close(); stmt.close(); conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return list;
 		
+		return list;
 	}
-
 	
 	
 }
-
-
