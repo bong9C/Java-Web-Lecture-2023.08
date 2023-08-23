@@ -1,14 +1,14 @@
-package com.example.demo.oracle;
+package com.example.demo.oracle.customer;
 
-public class Customer {
+public class CustomerTest {
 	private int custId;		//객체를 만들 때 기본적으로 쓰는게 private / getter, setter 만 public
 	private String name;
 	private String addr;
 	private String phone;
 	
-	public Customer() {
+	public CustomerTest() {
 	}
-	public Customer(int custId, String name, String addr, String phone) {
+	public CustomerTest(int custId, String name, String addr, String phone) {
 		this.custId = custId;
 		this.name = name;
 		this.addr = addr;

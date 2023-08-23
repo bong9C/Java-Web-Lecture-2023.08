@@ -1,15 +1,15 @@
-package com.example.demo.oracle;
+package com.example.demo.oracle.book;
 
-public class Book {
+public class BookTest {
 	private int bookid; //객체를 만들 때 기본적으로 쓰는게 private / getter, setter 만 public
 	private String bookname;
 	private String publisher;
 	private int price;
 	
 	
-	public Book() {
+	public BookTest() {      // 기본생성자도 만들어주기 
 	}
-	public Book(int bookid, String bookname, String publisher, int price) {
+	public BookTest(int bookid, String bookname, String publisher, int price) {
 		this.bookid = bookid;
 		this.bookname = bookname;
 		this.publisher = publisher;
