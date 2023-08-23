@@ -99,6 +99,26 @@ public class BookDao {
 		return list;
 	}
 	
+	public void insertBook(BookTest b) {
+		Connection conn = myConnection();
+		String sql = "insert into book values (?, ?, ?, ?)";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,b.getBookid());
+			pstmt.setString(2, b.getBookname());
+			pstmt.setString(3, b.getPublisher());
+			pstmt.setInt(4, b.getPrice());
+			pstmt.executeUpdate();
+			
+			pstmt.close(); conn.close();
+		} catch (Exception e) {
+				e.printStackTrace();
+		
+	}
+		
+	}
+	
+	
 
 		
 }
