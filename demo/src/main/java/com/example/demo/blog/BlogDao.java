@@ -114,12 +114,12 @@ public class BlogDao {
 		
 	}
 	
-	public void deleteBlog(int bid) {
+	public void deleteBlog(int blog) {
 		String sql = "update blog set isDeleted=1 where bid=?";
 		try {
 			Connection conn =  DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, bid);
+			pstmt.setInt(1, blog);
 			pstmt.executeUpdate();
 			pstmt.close(); conn.close();
 		} catch (Exception e) {

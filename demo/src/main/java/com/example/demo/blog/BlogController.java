@@ -39,15 +39,16 @@ public class BlogController {
 	}
 	
 	@GetMapping("/detail/{bid}")
-	public String detail(@PathVariable int bid, Model model) {
-		bDao.increaseViewCount(bid);
+	public String detail(@PathVariable int bid, String option, Model model) {
+		if(option == null || option.equals(""))
+		bDao.increaseViewCount(bid); 		// DNI option 이 설정되어 있으면 조회수를 증가 시키지 않음
 		Blog blog = bDao.getBlog(bid);
 		model.addAttribute("blog",blog);
 		model.addAttribute("menu","blog");
 		return "blog/detail";
 	}
 	
-	@GetMapping("/update/{bid}")
+	@GetMapping("/update/{bid}") //
 	public String updateForm(@PathVariable int bid, Model model) {
 		Blog blog = bDao.getBlog(bid);
 		model.addAttribute("blog",blog);
@@ -60,6 +61,19 @@ public class BlogController {
 //	public String updateProc(String penName, String title, String content) {	이렇게 쓸 수도 있음
 //		Blog blog = new Blog(penName, title, content);
 		bDao.updateBlog(blog);
-		return "redirect:/blog/detail/" +blog.getBid();
+		return "redirect:/blog/detail/" +blog.getBid() + "?option=DNI"; //"?option=DNI" 있으면 수정 했을 때 조회수 증가 X , 없으면 수정도 조회수에 들어감
+	}
+	@GetMapping("/delete/{bid}") //
+	public String delete(@PathVariable int bid, Model model) {
+		model.addAttribute("bid",bid);   // model.addAttribute("bid",bid); 이렇게 사용해도 됨 
+		model.addAttribute("menu","blog");
+		return "blog/delete";
+	
+	}
+	
+	@GetMapping("/deleteConfirm/{bid}")
+	public String deleteConfirm(@PathVariable int bid) {
+		bDao.deleteBlog(bid);
+		return "redirect:/blog/list";
 	}
 }
