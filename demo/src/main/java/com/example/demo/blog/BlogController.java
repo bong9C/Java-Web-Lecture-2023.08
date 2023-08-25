@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BlogController {
 //	private BlogDao bDao = new BlogDao();
 //	@Autowired private BlogDao bDao;		// Spring에서 BlogDao() 객체를 생성해서 inject
-	@Autowired private BlogService bDao;    // BlogSernice 인터페이스, bDao 구현객체를 스프링이 넣어줌
+	@Autowired private BlogService blogService;    // BlogSernice 인터페이스, bDao 구현객체를 스프링이 넣어줌
 	
 	
 	@GetMapping("/list")
 	public String list(@RequestParam(name="f", defaultValue="title") String field,
 			@RequestParam(name="q", defaultValue="") String query,
 			Model model) {
-		List<Blog> list = bDao.getBlogList(field, query);
+		List<Blog> list = blogService.getBlogList(field, query);
 		model.addAttribute("blogList", list);
 		model.addAttribute("menu", "blog");
 		model.addAttribute("field", field);
@@ -41,15 +41,15 @@ public class BlogController {
 	public String writeProc(Blog blog) {										// 이렇게 쓸 수도 있지만
 //		public String writeProc(String penName, String title, String content) { // 이렇게 쓸 수도 있음
 //		Blog blog = new Blog(penName, title, content);
-		bDao.insertBlog(blog);
+		blogService.insertBlog(blog);
 		return "redirect:/blog/list";
 	}
 	
 	@GetMapping("/detail/{bid}")
 	public String detail(@PathVariable int bid, String option, Model model) {
 		if(option == null || option.equals(""))
-		bDao.increaseViewCount(bid); 		// DNI option 이 설정되어 있으면 조회수를 증가 시키지 않음
-		Blog blog = bDao.getBlog(bid);
+		blogService.increaseViewCount(bid); 		// DNI option 이 설정되어 있으면 조회수를 증가 시키지 않음
+		Blog blog = blogService.getBlog(bid);
 		model.addAttribute("blog",blog);
 		model.addAttribute("menu","blog");
 		return "blog/detail";
@@ -57,7 +57,7 @@ public class BlogController {
 	
 	@GetMapping("/update/{bid}") //
 	public String updateForm(@PathVariable int bid, Model model) {
-		Blog blog = bDao.getBlog(bid);
+		Blog blog = blogService.getBlog(bid);
 		model.addAttribute("blog",blog);
 		model.addAttribute("menu","blog");
 		return "blog/update";
@@ -67,7 +67,7 @@ public class BlogController {
 	public String updateProc(Blog blog) {     // 이렇게 쓸 수도 있지만 
 //	public String updateProc(String penName, String title, String content) {	이렇게 쓸 수도 있음
 //		Blog blog = new Blog(penName, title, content);
-		bDao.updateBlog(blog);
+		blogService.updateBlog(blog);
 		return "redirect:/blog/detail/" +blog.getBid() + "?option=DNI"; //"?option=DNI" 있으면 수정 했을 때 조회수 증가 X , 없으면 수정도 조회수에 들어감
 	}
 	@GetMapping("/delete/{bid}") //
@@ -80,7 +80,7 @@ public class BlogController {
 	
 	@GetMapping("/deleteConfirm/{bid}")
 	public String deleteConfirm(@PathVariable int bid) {
-		bDao.deleteBlog(bid);
+		blogService.deleteBlog(bid);
 		return "redirect:/blog/list";
 	}
 }
