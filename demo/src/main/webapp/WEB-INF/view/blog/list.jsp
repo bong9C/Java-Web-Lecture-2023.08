@@ -6,7 +6,17 @@
 <html>
 <head>
 	<%@ include file="./common/head.jspf" %>
-	<style>td, th { text-align: center; }</style>
+	<style>
+		td, th { text-align: center; }
+	</style>
+	<script>
+		function search(){
+			let field = document.getElementById('field').value;
+			let query = document.getElementById('query').value;
+			//console.log("search()", field, query);	오류가 있는지 없는지 F12 로 확인 
+			location.href = '/demo/blog/list?f=' + field + '&q=' + query;
+		}
+	</script>
 </head>
 <body>
 	<%@ include file="./common/top.jspf" %>
@@ -16,14 +26,35 @@
             <%@ include file="./common/aside.jspf" %>
             <!-- ================= Main ================= -->
             <div class="col-9">
-            	<h3>
-            		<strong>블로그 목록</strong>
-            		<span style="font-size: 0.6em;">
-            			<a href="/demo/blog/write">
-            				<i class="ms-5 fa-regular fa-file-lines"></i> 글쓰기
-            			</a>
-            		</span>
-            	</h3>
+            	<table class="tatle tatle-sm tatle-borderless">
+            		<tr>
+            			<td style="width: 52%; text-align: left;">
+			            	<h3>
+			            		<strong>블로그 목록</strong>
+			            		<span style="font-size: 0.6em;">
+			            			<a href="/demo/blog/write">
+			            				<i class="ms-5 fa-regular fa-file-lines"></i> 글쓰기
+			            			</a>
+			            		</span>
+			            	</h3>
+            			</td>
+            			<td style="width: 15%;">
+            			   <select class="form-select" id="field" >
+		                        <option value="title" ${field eq 'title' ? 'selected' : ''}>제목</option>
+		                        					<!-- 검색할 때 분류를 필명으로 정하고 검색하면 다시 제목으로 됨, 그걸 방지 -->
+		                        <option value="content" ${field eq 'content' ? 'selected' : ''}>본문</option>
+		                        <option value="penName" ${field eq 'penName' ? 'selected' : ''}>필명</option>
+		                    </select>
+            			</td>
+            			<td style="width: 25%;">
+            				<input class="form-control" placeholder="검색할 내용" id="query" value="${query}"
+            						onkeyup="if(window.event.keyCode==13) search()"> <!-- 13번은 엔터키, 엔터키를 누르면 호출함 -->
+            			</td>
+            			<td style="width: 8%;">
+            				<button class="btn btn-outline-primary" onclick="search()">검색</button>
+            			</td>
+            		</tr>
+            	</table>
                 <hr>
                 <table class="table">
                 	<tr class="table-secondary">
