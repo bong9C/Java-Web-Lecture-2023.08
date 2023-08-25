@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/blog")
 public class BlogController {
 //	private BlogDao bDao = new BlogDao();
-	@Autowired private BlogDao bDao;		// Spring에서 BlogDao() 객체를 생성해서 inject
+//	@Autowired private BlogDao bDao;		// Spring에서 BlogDao() 객체를 생성해서 inject
+	@Autowired private BlogService bDao;    // BlogSernice 인터페이스, bDao 구현객체를 스프링이 넣어줌
+	
 	
 	@GetMapping("/list")
 	public String list(@RequestParam(name="f", defaultValue="title") String field,
