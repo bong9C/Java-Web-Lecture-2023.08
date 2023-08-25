@@ -17,18 +17,18 @@ public interface BlogDaoOracle {
 	
 	
 	@Select("select * from blog where ${field} like #{query} and isDeleted=0"
-			+ "order by modTime desc")
+			+ " order by modTime desc")
 	List<Blog> getBlogList(String field, String query);
 	
 	@Insert("insert into blog(penName, title, content)"
-			+ "values (#{pneName}, #{title}, #{content, jdbcType=VARCHAR})")
+			+ " values (#{penName}, #{title}, #{content, jdbcType=VARCHAR})")
 	void insertBlog(Blog blog);
 	
-	@Update("update blog set penName=#{pneName}, title=#{title}, content=#{content, jdbcType=VARCHAR}, "
-			+ "+ modTime=current_timestamp, where bid=#{bid}")
+	@Update("update blog set penName=#{penName}, title=#{title}, content=#{content, jdbcType=VARCHAR},"
+			+ " modTime=current_timestamp where bid=#{bid}")
 	void updateBlog(Blog blog);
 	
-	@Delete("update blog set isDeleted=1 where=#{bid}")
+	@Update("update blog set isDeleted=1 where bid=#{bid}")
 	void deleteBlog(int bid);
 	
 	@Update("update blog set viewCount=viewCount+1 where bid=#{bid}")

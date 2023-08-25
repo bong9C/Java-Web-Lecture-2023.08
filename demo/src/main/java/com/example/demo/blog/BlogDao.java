@@ -69,7 +69,7 @@ public class BlogDao {
 	
 	public List<Blog> getBlogList(String field, String query) {
 		String sql = "select * from blog where " + field + " like ?  and isDeleted=0 "
-				+ " order by modTime desc";
+				+ " order by modTime desc";  // field는 파라미터가 아니라서 부르려면 $를 써야 함. 
 		List<Blog> list = new ArrayList<>();
 		try {
 			Connection conn =  DriverManager.getConnection(url, username, password);
