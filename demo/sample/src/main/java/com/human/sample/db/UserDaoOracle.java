@@ -1,0 +1,20 @@
+package com.human.sample.db;
+
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import com.human.sample.entity.User;
+
+@Mapper
+public interface UserDaoOracle {
+		
+	@Select( "select * from users where \"uid\"=#{uid}")
+	public User getUser(String uid);
+	
+	// #{uid} --> user.getUid()를 부를 수 있게 약속이 되어 있는 것. 
+	@Insert("insert into users valuse (#{uid}, #{pwd}, #{uname}, #{email}, default, default)")
+	public void insertUser(User user);
+}
+
+	
