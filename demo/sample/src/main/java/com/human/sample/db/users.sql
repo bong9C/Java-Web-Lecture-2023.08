@@ -6,3 +6,4 @@ create table users (
     regDate date default (CURRENT_DATE),
     isDeleted number(10,0) default 0
 );
+
