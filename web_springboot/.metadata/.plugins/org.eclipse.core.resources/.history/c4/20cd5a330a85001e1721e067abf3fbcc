@@ -1,0 +1,5 @@
+package com.example.sample.controller.entity;
+
+public class User {
+
+}

@@ -1,0 +1,18 @@
+package com.example.sample.controller;
+
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class ErrorHandlingController implements ErrorController {
+	private final String ERROR_404PAGE_PATH = "error/error404";
+	private final String ERROR_500PAGE_PATH = "error/error500";
+	private final String ERROR_ETC_PAGE_PATH = "error/error";
+	
+	   @GetMapping("/error")
+	   public String handleError() {
+	      return ERROR_ETC_PAGE_PATH;
+	   }
+	   
+}

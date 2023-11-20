@@ -1,0 +1,5 @@
+package com.example.sample.db;
+
+public interface UserDaoOracle {
+
+}
