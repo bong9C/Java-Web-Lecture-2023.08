@@ -42,8 +42,17 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
-			<item value="E:\Bigproject_H\project"/>
-			<item value="D:\Web_Springboot\sample"/>
+			<item value="D:\Javaweb"/>
+			<item value="D:\Javaweb\sample"/>
+			<item value="D:\Javaweb\sample\sample"/>
+		</list>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="191"/>
+		<item key="DIALOG_Y_ORIGIN" value="58"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
 		</list>
 	</section>
 </section>
