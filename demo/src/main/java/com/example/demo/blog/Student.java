@@ -9,8 +9,8 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-@NoArgsConstructor			//기본생성자
-@AllArgsConstructor			//전체생성자
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
 	private int sid;
 	private String name;

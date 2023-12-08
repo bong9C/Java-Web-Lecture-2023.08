@@ -33,7 +33,7 @@ CREATE TABLE Customer
 CREATE TABLE Orders
 (
 	orderid number(2) NOT NULL,
-	saleprice number(8) NOT NULL,
+	saleprice number(8) DEFAULT 0 NOT NULL,
 	orderdate date DEFAULT SYSDATE,
 	custid number(2) NOT NULL,
 	bookid number(2) NOT NULL,

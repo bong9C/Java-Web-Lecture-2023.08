@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%-- <body> 상단에 있는 navigation bar  --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%-- <body> 상단에 있는 navigation bar --%>
 
-
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class="container-fluid">
             <ul class="navbar-nav">
                 <a class="navbar-brand mx-5" href="#"><img src="/demo/img/ck-logo.png" height="36"></a>
@@ -10,7 +9,7 @@
                     <a class="nav-link ${menu eq 'board' ? 'active' : ''}" href="#"><i class="far fa-list-alt"></i> 게시판</a>
                 </li>
                 <li class="nav-item ms-3">
-                  <ul><a class="nav-link ${menu eq 'user' ? 'active' : ''}" href="#"><i class="fas fa-user-friends"></i> 사용자</a></ul>
+                    <a class="nav-link ${menu eq 'user' ? 'active' : ''}" href="#"><i class="fas fa-user-friends"></i> 사용자</a>
                 </li>
                 <li class="nav-item dropdown ms-3">
                     <a class="nav-link dropdown-toggle ${menu eq 'ai' ? 'active' : ''}" href="#" data-bs-toggle="dropdown">

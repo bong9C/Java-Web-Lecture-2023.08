@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>navigator 객체</title>
+    <title>Navigator 객체</title>
     <script>
-        window.onload = function() {        // body 가 화면에 다 보여진 이후에 실행
-            attr = `appCodeName: ${navigator.appCodeName}<br>`;                 // `` template literal
+        window.onload = function() {    // body가 화면에 다 보여진 이후에 실행
+            let attr = `appCodeName: ${navigator.appCodeName}<br>`;     
             attr += `appName: ${navigator.appName}<br>`;
             attr += `appVersion: ${navigator.appVersion}<br>`;
             attr += `platform: ${navigator.platform}<br>`;
-            attr += `userAgent: ${navigator.userAgent}<br>`;    
+            attr += `userAgent: ${navigator.userAgent}<br>`;
             document.getElementById('info').innerHTML = attr;
         }
     </script>
 </head>
-<body stylr="margin: 40px;">
-    <h3 id="info"></h3>    
+<body style="margin: 40px;">
+    <h3 id="info"></h3>
 </body>
 </html>

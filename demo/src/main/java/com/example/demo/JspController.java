@@ -125,7 +125,7 @@ public class JspController {
 		return "jsp/jstl3_fn";
 	}
 	
-	@GetMapping("/home")
+	@GetMapping("/homework")
 	public String homework(Model model) {
 		Address addr1 = new Address(12345, "LA", "미국");
 		Address addr2 = new Address(67890, "뉴욕", "미국");

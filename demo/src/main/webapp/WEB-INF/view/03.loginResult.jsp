@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>로그인 결과</title>
+	<meta charset="UTF-8">
+	<title>로그인 결과</title>
 </head>
 <body>
 	<h1>로그인 결과</h1>

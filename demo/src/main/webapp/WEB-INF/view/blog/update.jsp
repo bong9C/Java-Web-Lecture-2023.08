@@ -27,7 +27,8 @@
                 				<tr>
                 					<td style="width: 10%;"><label class="col-form-label">필명</label></td>
                 					<td style="width: 90%;">
-                					<input class="form-control" type="text" name="penName" value="${blog.penName}"></td>
+                						<input class="form-control" type="text" name="penName" value="${blog.penName}">
+                					</td>
                 				</tr>
                 				<tr>
                 					<td><label class="col-form-label">제목</label></td>

@@ -1,23 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<%@ include file="./common/head.jspf" %>
 	<style>
-        th { text-align: center; width: 14.28%; }
+		th { text-align: center; width: 14.28%; }
         td { height: 100px; }
 	</style>
 </head>
 <body>
 	<%@ include file="./common/top.jspf" %>
-	
-	    <div class="container" style="margin-top:80px">
+
+    <div class="container" style="margin-top:80px">
         <div class="row">
             <%@ include file="./common/aside.jspf" %>
-            <!-- ======================= main ============================ -->
+            <!-- ================= Main ================= -->
+            
             <div class="col-9">
-           
                 <h3><strong>일정표</strong></h3>
                 <hr>
                 <div class="d-flex justify-content-between">
@@ -103,12 +103,11 @@
                     </tr>
                 </table>
             </div>
-             <!-- ======================= main ============================ -->
+            
+			<!-- ================= Main ================= -->
         </div>
     </div>
-	
-	
-	
+
 	<%@ include file="./common/bottom.jspf" %>
 </body>
 </html>

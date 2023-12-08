@@ -1,18 +1,21 @@
 package com.example.demo;
 
-public class Member { 
+public class Member {
 	private int id;
 	private String name;
 	private Address addr;
+	
 	public Member(int id, String name, Address addr) {
 		this.id = id;
 		this.name = name;
 		this.addr = addr;
 	}
+	
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", name=" + name + ", addr=" + addr + "]";
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -31,6 +34,4 @@ public class Member {
 	public void setAddr(Address addr) {
 		this.addr = addr;
 	}
-	
-
 }

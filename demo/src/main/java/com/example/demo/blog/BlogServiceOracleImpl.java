@@ -39,7 +39,7 @@ public class BlogServiceOracleImpl implements BlogService {
 
 	@Override
 	public void increaseViewCount(int bid) {
-		blogDao.deleteBlog(bid);
+		blogDao.increaseViewCount(bid);
 	}
 
 }

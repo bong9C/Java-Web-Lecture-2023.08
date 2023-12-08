@@ -7,23 +7,21 @@
     <script>
         function handler() {
             // 첫번째 h1 태그
-            document.querySelector('h1').style.backgroundColor = 'pink';
-    
+            document.querySelector('h1').style.backgroundColor = 'orange';
+
             // 모든 h1 태그
             let h1Array = document.querySelectorAll('h1');
             for (let h1 of h1Array)
-                h1.style.color = 'skyblue';
+                h1.style.color = 'blue';
 
             // class가 header1인 모든 요소
             let header1Array = document.querySelectorAll('.header1');
             for (let h1 of header1Array)
                 h1.style.backgroundColor = 'yellow';
 
-            //id가 header1인 요소
-            document.querySelector('#header1').innerHTML = 'From JavaScript';      //글씨 바꾸기
-            
+            // id가 header1인 요소
+            document.querySelector('#header1').innerHTML = 'From JavaScript';
         }
-
     </script>
 </head>
 <body style="margin: 40px;">
@@ -31,6 +29,6 @@
     <h1 class="header1">Header No.2</h1>
     <h1 id="header1">Header No.3</h1>
     <h1 class="header1">Header No.4</h1>
-    <button onclick="handler()">GO!!!</button>
+    <button onclick="handler()">Go!!!</button>
 </body>
 </html>

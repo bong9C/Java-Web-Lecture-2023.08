@@ -134,8 +134,8 @@
 			<connections>
 			</connections>
 			<display>false</display>
-			<creation_date>2023-08-18 10:10:32</creation_date>
-			<updated_date>2023-08-18 13:54:03</updated_date>
+			<creation_date>2023-08-18 10:09:51</creation_date>
+			<updated_date>2023-08-18 13:35:06</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -350,12 +350,12 @@
 	<contents>
 		<table>
 			<id>0</id>
-			<height>75</height>
-			<width>120</width>
+			<height>145</height>
+			<width>253</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>124</x>
-			<y>51</y>
+			<x>84</x>
+			<y>72</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -513,12 +513,12 @@
 		</table>
 		<table>
 			<id>1</id>
-			<height>133</height>
-			<width>220</width>
+			<height>145</height>
+			<width>253</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>124</x>
-			<y>231</y>
+			<x>84</x>
+			<y>264</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -676,12 +676,12 @@
 		</table>
 		<table>
 			<id>2</id>
-			<height>121</height>
-			<width>220</width>
+			<height>157</height>
+			<width>253</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>484</x>
-			<y>171</y>
+			<x>432</x>
+			<y>168</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -782,7 +782,7 @@
 					<physical_name></physical_name>
 					<type>decimal(p)</type>
 					<constraint></constraint>
-					<default_value></default_value>
+					<default_value>0</default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
 					<not_null>true</not_null>

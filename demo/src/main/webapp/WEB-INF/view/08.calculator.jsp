@@ -17,7 +17,7 @@
     <form action="/demo/calculator" method="post">
         <table>
             <tr>
-                <td class="result" colspan="4">${eval}</td> 
+                <td class="result" colspan="4">${eval}</td>
                 <input type="hidden" name="eval" value="${eval}">
             </tr>
             <tr>

@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>JSTL</title>
-	<style>td { padding: 3px; }</style>
+	<style>td, th { padding: 3px; }</style>
 </head>
 <body style="margin: 40px;">
 	<h1>JSTL(JSP Standard Tag Library) Core</h1>
@@ -32,10 +32,10 @@
 			<td>${memberList[0].addr.country}</td>
 		</tr>
 		<tr>
-			<td>${memberList[0].id}</td>
-			<td>${memberList[0].name}</td>
-			<td>${memberList[0].addr.city}</td>
-			<td>${memberList[0].addr.country}</td>
+			<td>${memberList[1].id}</td>
+			<td>${memberList[1].name}</td>
+			<td>${memberList[1].addr.city}</td>
+			<td>${memberList[1].addr.country}</td>
 		</tr>
 	</table>
 	<br>
@@ -43,10 +43,10 @@
 		<tr><th>아이디</th><th>이름</th><th>도시</th><th>국가</th></tr>
 	<c:forEach var="member" items="${memberArray}">
 		<tr>
-			<td class="col-2">${member.id}</td>
-			<td class="col-2">${member.name}</td>
-			<td class="col-4">${member.addr.city}</td>
-			<td class="col-4">${member.addr.country}</td>
+			<td>${member.id}</td>
+			<td>${member.name}</td>
+			<td>${member.addr.city}</td>
+			<td>${member.addr.country}</td>
 		</tr>
 	</c:forEach>
 	</table>

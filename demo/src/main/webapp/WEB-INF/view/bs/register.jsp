@@ -45,7 +45,7 @@
                         </tr>
                         <tr>
                             <td><label class="col-form-label">이름</label></td>
-                            <td><input type="text" name="name" class="form-control"></td>
+                            <td><input type="text" name="uname" class="form-control"></td>
                         </tr>
                         <tr>
                             <td><label class="col-form-label">이메일</label></td>

@@ -16,19 +16,18 @@ public class BlogDao {
 	@Value("${spring.datasource.url}") private String url;
 	@Value("${spring.datasource.username}") private String username;
 	@Value("${spring.datasource.password}") private String password;
-	
+
 //	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
 //	private String username = "hmuser";
 //	private String password = "hmpass";
 	
 	public Blog getBlog(int bid) {
 		String sql = "select * from blog where bid=?";
-		//System.out.println(url);
 		Blog blog = null;
 		try {
-			Connection conn =  DriverManager.getConnection(url, username, password);
+			Connection conn = DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1,  bid);
+			pstmt.setInt(1, bid);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				bid = rs.getInt(1);
@@ -38,23 +37,21 @@ public class BlogDao {
 				String modTime = rs.getString(5);
 				int viewCount = rs.getInt(6);
 				int isDeleted = rs.getInt(7);
-				blog = new Blog(bid, penName, title, content,	// Oracle 	2023-08-23 14:18:51.402000000
-						LocalDateTime.parse(modTime.substring(0, 19).replace(" ", "T")), //LocalDateTime	2023-08-23T14:18:51 
+				blog = new Blog(bid, penName, title, content, 
+						LocalDateTime.parse(modTime.substring(0, 19).replace(" ", "T")),
 						viewCount, isDeleted);
-				
 			}
 			rs.close(); pstmt.close(); conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return blog;
-				
 	}
 	
 	public void insertBlog(Blog blog) {
 		String sql = "insert into blog(penName, title, content) values (?, ?, ?)";
 		try {
-			Connection conn =  DriverManager.getConnection(url, username, password);
+			Connection conn = DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, blog.getPenName());
 			pstmt.setString(2, blog.getTitle());
@@ -64,15 +61,14 @@ public class BlogDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public List<Blog> getBlogList(String field, String query) {
-		String sql = "select * from blog where " + field + " like ?  and isDeleted=0 "
-				+ " order by modTime desc";  // field는 파라미터가 아니라서 부르려면 $를 써야 함. 
+		String sql = "select * from blog where " + field + " like ? and isDeleted=0 "
+					+ " order by modTime desc";
 		List<Blog> list = new ArrayList<>();
 		try {
-			Connection conn =  DriverManager.getConnection(url, username, password);
+			Connection conn = DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + query + "%");
 			ResultSet rs = pstmt.executeQuery();
@@ -84,11 +80,10 @@ public class BlogDao {
 				String modTime = rs.getString(5);
 				int viewCount = rs.getInt(6);
 				int isDeleted = rs.getInt(7);
-				Blog blog = new Blog(bid, penName, title, content,	// Oracle 	2023-08-23 14:18:51.402000000
-						LocalDateTime.parse(modTime.substring(0, 19).replace(" ", "T")), //LocalDateTime	2023-08-23T14:18:51 
-						viewCount, isDeleted);
+				Blog blog = new Blog(bid, penName, title, content, 
+							LocalDateTime.parse(modTime.substring(0, 19).replace(" ", "T")),
+							viewCount, isDeleted);
 				list.add(blog);
-				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,10 +92,10 @@ public class BlogDao {
 	}
 	
 	public void updateBlog(Blog blog) {
-		String sql = "update blog set penName=?, title=?, content=?, modTime=current_timestamp" 
-				+ " where bid=?";
+		String sql = "update blog set penName=?, title=?, content=?, modTime=current_timestamp "
+					+ " where bid=?";
 		try {
-			Connection conn =  DriverManager.getConnection(url, username, password);
+			Connection conn = DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, blog.getPenName());
 			pstmt.setString(2, blog.getTitle());
@@ -111,27 +106,12 @@ public class BlogDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
-	public void deleteBlog(int blog) {
+	public void deleteBlog(int bid) {
 		String sql = "update blog set isDeleted=1 where bid=?";
 		try {
-			Connection conn =  DriverManager.getConnection(url, username, password);
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, blog);
-			pstmt.executeUpdate();
-			pstmt.close(); conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public void increaseViewCount(int bid) {
-		String sql = "update blog set viewCount=viewCount+1 where bid=?";
-		try {
-			Connection conn =  DriverManager.getConnection(url, username, password);
+			Connection conn = DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bid);
 			pstmt.executeUpdate();
@@ -139,7 +119,19 @@ public class BlogDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
+	
+	public void increaseViewCount(int bid) {
+		String sql = "update blog set viewCount=viewCount+1 where bid=?";
+		try {
+			Connection conn = DriverManager.getConnection(url, username, password);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bid);
+			pstmt.executeUpdate();
+			pstmt.close(); conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

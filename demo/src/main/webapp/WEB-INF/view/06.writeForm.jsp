@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>글 쓰기</title>
+	<meta charset="UTF-8">
+	<title>글 쓰기</title>
 	<style>
-		td { padding: 3px; text-align: center; }
+		td	{ padding: 3px; text-align: center; }
 	</style>
 </head>
 <body style="margin: 50px">
@@ -36,9 +36,8 @@
 				<td colspan="2">
 					<input type="submit" value="제출">
 				</td>
-			</tr>						
+			</tr>
 		</table>
 	</form>
-	
 </body>
 </html>

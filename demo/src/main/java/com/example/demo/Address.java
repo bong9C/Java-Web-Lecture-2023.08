@@ -4,15 +4,18 @@ public class Address {
 	private int zipCode;
 	private String city;
 	private String country;
+	
 	public Address(int zipCode, String city, String country) {
 		this.zipCode = zipCode;
 		this.city = city;
 		this.country = country;
 	}
+	
 	@Override
 	public String toString() {
-		return " ( " + zipCode + " )  " + city + "      " + country ;
+		return "Address [zipCode=" + zipCode + ", city=" + city + ", country=" + country + "]";
 	}
+	
 	public int getZipCode() {
 		return zipCode;
 	}
@@ -31,6 +34,4 @@ public class Address {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
-
 }

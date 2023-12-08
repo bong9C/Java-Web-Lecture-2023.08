@@ -16,6 +16,7 @@ public class Board {
 	public String toString() {
 		return "Board [title=" + title + ", languages=" + languages + ", content=" + content + "]";
 	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -34,7 +35,4 @@ public class Board {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-		
-
 }

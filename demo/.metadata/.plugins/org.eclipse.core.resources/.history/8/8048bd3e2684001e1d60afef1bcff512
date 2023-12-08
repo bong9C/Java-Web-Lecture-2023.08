@@ -1,0 +1,5 @@
+package com.human.sample.service;
+
+public class UserServiceOracleImpl {
+
+}
